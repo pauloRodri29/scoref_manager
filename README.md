@@ -1,16 +1,18 @@
-# scoref_manager
+# Scoref Manager 📊
 
-A new Flutter project.
+Bem-vindo ao **Scoref Manager**, um projeto Flutter focado em criar uma solução simples e atrativa. 🚀
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📱 Sobre o Projeto
 
-A few resources to get you started if this is your first Flutter project:
+O **Scoref Manager** é um aplicativo Android desenvolvido para oferecer uma experiência intuitiva e eficiente, projetado com foco em:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Facilidade de uso**: Interface amigável e acessível para todos os níveis de usuários.
+- **Desempenho otimizado**: Aproveitando o poder do Flutter para garantir fluidez e velocidade.
+- **Estética moderna**: Um design atrativo que combina funcionalidade com estilo.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🛠️ Funcionalidades
+----------
