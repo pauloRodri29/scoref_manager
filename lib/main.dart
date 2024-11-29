@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:scoref_manager/core/routers/app_routers.dart';
 import 'package:scoref_manager/widgets/home/home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+    WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  runApp( MaterialApp(home: const MyApp(),debugShowCheckedModeBanner: false, initialRoute: AppRoutes.i.initial,),);
 }
 
 class MyApp extends StatelessWidget {
@@ -10,12 +14,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomePage(),
-    );
+    return const HomePage();
   }
 }
