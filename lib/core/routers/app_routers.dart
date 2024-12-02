@@ -8,4 +8,6 @@ class AppRoutes {
     return _instance!;
   }
   final String initial = '/';
+  final String volleyballPage = 'Volleyball';
+  final String chessPage = 'Chess';
 }
