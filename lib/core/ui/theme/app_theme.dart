@@ -24,7 +24,7 @@ class AppTheme {
       ),
       textTheme: const TextTheme(
         displayLarge: TextStyle(
-            fontSize: 36,
+            fontSize: 250,
             fontWeight: FontWeight.bold,
             color: AppColors.primary900),
         displayMedium: TextStyle(
@@ -117,7 +117,7 @@ class AppTheme {
       ),
       textTheme: const TextTheme(
         displayLarge: TextStyle(
-            fontSize: 35,
+            fontSize: 250,
             fontWeight: FontWeight.bold,
             color: AppColors.primary50),
         displayMedium: TextStyle(
