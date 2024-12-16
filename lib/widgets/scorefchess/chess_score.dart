@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scoref_manager/core/components/error_widget.dart';
+import 'package:scoref_manager/core/components/temporary_widget.dart';
 
 class ScorefChessPage extends StatefulWidget {
   const ScorefChessPage({super.key});
@@ -13,7 +13,7 @@ class _ScorefChessPageState extends State<ScorefChessPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const CustomErrorWidget(
+      body: const CustomTempararyWidget(
         icon: Icons.precision_manufacturing_rounded,
         message: "Tela em Manuntenção",
       ),

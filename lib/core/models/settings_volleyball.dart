@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class SettingsVolleyball {
@@ -7,27 +8,30 @@ class SettingsVolleyball {
   Color colorTeam2;
   int scoreTeam1;
   int scoreTeam2;
+  int victoryTeam1;
+  int victoryTeam2;
   int time;
+  int fullPoint;
 
   SettingsVolleyball({
-    this.nameTeam1 = "Team 1",
-    this.nameTeam2 = "Team 2",
-    this.scoreTeam2 = 0,
-    this.scoreTeam1 = 0,
-    this.colorTeam1 = Colors.lime,
-    this.colorTeam2 = Colors.lightBlueAccent,
+    this.nameTeam1 = "Time 1",
+    this.nameTeam2 = "Time 2",
+    this.colorTeam1 = Colors.redAccent,
+    this.colorTeam2 = Colors.blueAccent,
+    this.scoreTeam1 = 10,
+    this.scoreTeam2 = 10,
+    this.victoryTeam1 = 1,
+    this.victoryTeam2 = 2,
     this.time = 0,
+    this.fullPoint = 12,
   });
 
-  incrementStoref(int scoref) {
-    return scoref++;
-  }
+  int incrementScore(int value) => value++;
 
-  decrementStoref(int scoref) {
-    return scoref--;
-  }
+  int decrementScore(int value) => value--;
 
-  resetStoref(int scoref) {
-    return 0;
+  void resetScore() {
+    scoreTeam1 = 0;
+    scoreTeam2 = 0;
   }
 }

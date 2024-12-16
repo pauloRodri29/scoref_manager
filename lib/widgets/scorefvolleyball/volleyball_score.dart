@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:scoref_manager/core/components/custom_card.dart';
-import 'package:scoref_manager/widgets/scorefvolleyball/volleyball_score_store.dart';
+import 'package:scoref_manager/core/components/volleyball/cards_score.dart';
+import 'package:scoref_manager/core/components/volleyball/opction_buton.dart';
+import 'package:scoref_manager/widgets/scorefvolleyball/stores/volleyball_score_store.dart';
 
 class ScorefVolleyballPage extends StatefulWidget {
   const ScorefVolleyballPage({super.key});
@@ -25,92 +27,82 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
     super.dispose();
   }
 
-  VolleyballScoreStore _scorefVolleyball = VolleyballScoreStore();
+  final VolleyballScoreStore _scorefVolleyball = VolleyballScoreStore();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            const Icon(Icons.sports_volleyball),
-            Expanded(
-              child: Observer(
-                builder: (_) {
-                  return Row(
+        child: Observer(
+          builder: (_) {
+            return Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    //Time 1
+                    Text(
+                      _scorefVolleyball.nameTeam1,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    Row(
+                      children: [
+                        CardCustomScoreVolleyball(
+                          scoreTime: _scorefVolleyball.victoryTeam1,
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        OptionButonVolleyball(
+                          onPressed: _scorefVolleyball.resetPoint,
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        CardCustomScoreVolleyball(
+                          scoreTime: _scorefVolleyball.victoryTeam2,
+                        ),
+                      ],
+                    ),
+                    //Nome do Time 2
+                    Text(
+                      _scorefVolleyball.nameTeam2,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    )
+                  ],
+                ),
+                Expanded(
+                  child: Row(
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              _scorefVolleyball.resetStoreTeam1();
-                            },
-                            icon: const Icon(
-                              Icons.exposure_zero,
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              _scorefVolleyball.incrementStoreTeam1();
-                            },
-                            icon: const Icon(
-                              Icons.add,
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              _scorefVolleyball.decrementStorieTeam1();
-                            },
-                            icon: const Icon(
-                              Icons.settings_backup_restore_rounded,
-                            ),
-                          ),
-                        ],
+                      CustomCardScoreVolleyballWidget(
+                        dragUp: () {
+                          _scorefVolleyball.incrementPointTeam1();
+                        },
+                        dragDown: () {
+                          _scorefVolleyball.decrementPointTeam1();
+                        },
+                        value: _scorefVolleyball.scoreTeam1.toString(),
+                        color: _scorefVolleyball.colorTeam1,
+                      ),
+                      const SizedBox(
+                        width: 8,
                       ),
                       CustomCardScoreVolleyballWidget(
-                        score: _scorefVolleyball.scoreTeam1.toString(),
-                        color: Colors.deepPurpleAccent,
-                      ),
-                      CustomCardScoreVolleyballWidget(
-                        score: _scorefVolleyball.scoreTeam2.toString(),
-                        color: Colors.deepOrange,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              _scorefVolleyball.resetStoreTeam2();
-                            },
-                            icon: const Icon(
-                              Icons.exposure_zero,
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              _scorefVolleyball.incrementStoreTeam2();
-                            },
-                            icon: const Icon(
-                              Icons.add,
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              _scorefVolleyball.decrementStorieTeam2();
-                            },
-                            icon: const Icon(
-                              Icons.settings_backup_restore_rounded,
-                            ),
-                          ),
-                        ],
+                        dragUp: () {
+                          _scorefVolleyball.incrementPointTeam2();
+                        },
+                        dragDown: () {
+                          _scorefVolleyball.decrementPointTeam2();
+                        },
+                        value: _scorefVolleyball.scoreTeam2.toString(),
+                        color: _scorefVolleyball.colorTeam2,
                       ),
                     ],
-                  );
-                },
-              ),
-            ),
-          ],
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CustomErrorWidget extends StatelessWidget {
+class CustomTempararyWidget extends StatelessWidget {
   final String message;
   final IconData icon;
-  const CustomErrorWidget({
+  const CustomTempararyWidget({
     super.key,
     required this.message,
     required this.icon,
