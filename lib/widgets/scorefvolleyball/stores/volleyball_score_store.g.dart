@@ -9,6 +9,34 @@ part of 'volleyball_score_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$VolleyballScoreStore on _VolleyballScoreStoreBase, Store {
+  Computed<String>? _$isNameTeam1Computed;
+
+  @override
+  String get isNameTeam1 =>
+      (_$isNameTeam1Computed ??= Computed<String>(() => super.isNameTeam1,
+              name: '_VolleyballScoreStoreBase.isNameTeam1'))
+          .value;
+  Computed<String>? _$isNameTeam2Computed;
+
+  @override
+  String get isNameTeam2 =>
+      (_$isNameTeam2Computed ??= Computed<String>(() => super.isNameTeam2,
+              name: '_VolleyballScoreStoreBase.isNameTeam2'))
+          .value;
+  Computed<Color>? _$isColorTeam1Computed;
+
+  @override
+  Color get isColorTeam1 =>
+      (_$isColorTeam1Computed ??= Computed<Color>(() => super.isColorTeam1,
+              name: '_VolleyballScoreStoreBase.isColorTeam1'))
+          .value;
+  Computed<Color>? _$isColorTeam2Computed;
+
+  @override
+  Color get isColorTeam2 =>
+      (_$isColorTeam2Computed ??= Computed<Color>(() => super.isColorTeam2,
+              name: '_VolleyballScoreStoreBase.isColorTeam2'))
+          .value;
   Computed<int>? _$isScoreTeam1Computed;
 
   @override
@@ -37,33 +65,12 @@ mixin _$VolleyballScoreStore on _VolleyballScoreStoreBase, Store {
       (_$isVictoryTeam2Computed ??= Computed<int>(() => super.isVictoryTeam2,
               name: '_VolleyballScoreStoreBase.isVictoryTeam2'))
           .value;
-  Computed<String>? _$isNameTeam1Computed;
+  Computed<int>? _$isFullScoreComputed;
 
   @override
-  String get isNameTeam1 =>
-      (_$isNameTeam1Computed ??= Computed<String>(() => super.isNameTeam1,
-              name: '_VolleyballScoreStoreBase.isNameTeam1'))
-          .value;
-  Computed<String>? _$isNameTeam2Computed;
-
-  @override
-  String get isNameTeam2 =>
-      (_$isNameTeam2Computed ??= Computed<String>(() => super.isNameTeam2,
-              name: '_VolleyballScoreStoreBase.isNameTeam2'))
-          .value;
-  Computed<Color>? _$isColorTeam1Computed;
-
-  @override
-  Color get isColorTeam1 =>
-      (_$isColorTeam1Computed ??= Computed<Color>(() => super.isColorTeam1,
-              name: '_VolleyballScoreStoreBase.isColorTeam1'))
-          .value;
-  Computed<Color>? _$isColorTeam2Computed;
-
-  @override
-  Color get isColorTeam2 =>
-      (_$isColorTeam2Computed ??= Computed<Color>(() => super.isColorTeam2,
-              name: '_VolleyballScoreStoreBase.isColorTeam2'))
+  int get isFullScore =>
+      (_$isFullScoreComputed ??= Computed<int>(() => super.isFullScore,
+              name: '_VolleyballScoreStoreBase.isFullScore'))
           .value;
 
   late final _$nameTeam1Atom =
@@ -194,6 +201,22 @@ mixin _$VolleyballScoreStore on _VolleyballScoreStoreBase, Store {
     });
   }
 
+  late final _$fullScoreAtom =
+      Atom(name: '_VolleyballScoreStoreBase.fullScore', context: context);
+
+  @override
+  int get fullScore {
+    _$fullScoreAtom.reportRead();
+    return super.fullScore;
+  }
+
+  @override
+  set fullScore(int value) {
+    _$fullScoreAtom.reportWrite(value, super.fullScore, () {
+      super.fullScore = value;
+    });
+  }
+
   late final _$_VolleyballScoreStoreBaseActionController =
       ActionController(name: '_VolleyballScoreStoreBase', context: context);
 
@@ -263,14 +286,16 @@ scoreTeam1: ${scoreTeam1},
 scoreTeam2: ${scoreTeam2},
 victoryTeam1: ${victoryTeam1},
 victoryTeam2: ${victoryTeam2},
+fullScore: ${fullScore},
+isNameTeam1: ${isNameTeam1},
+isNameTeam2: ${isNameTeam2},
+isColorTeam1: ${isColorTeam1},
+isColorTeam2: ${isColorTeam2},
 isScoreTeam1: ${isScoreTeam1},
 isScoreTeam2: ${isScoreTeam2},
 isVictoryTeam1: ${isVictoryTeam1},
 isVictoryTeam2: ${isVictoryTeam2},
-isNameTeam1: ${isNameTeam1},
-isNameTeam2: ${isNameTeam2},
-isColorTeam1: ${isColorTeam1},
-isColorTeam2: ${isColorTeam2}
+isFullScore: ${isFullScore}
     ''';
   }
 }
