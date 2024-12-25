@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:scoref_manager/core/components/custom_card.dart';
+import 'package:scoref_manager/core/components/volleyball/custom_card.dart';
 import 'package:scoref_manager/core/components/volleyball/cards_score.dart';
-import 'package:scoref_manager/core/components/volleyball/opction_buton.dart';
 import 'package:scoref_manager/widgets/scorefvolleyball/stores/volleyball_score_store.dart';
 
+// Tela de marcador de placar para partidas de volei
 class ScorefVolleyballPage extends StatefulWidget {
   const ScorefVolleyballPage({super.key});
 
@@ -18,7 +18,8 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
   void initState() {
     super.initState();
     SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+      [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight],
+    );
   }
 
   @override
@@ -32,6 +33,27 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: _scorefVolleyball.resetPoint,
+            icon: Icon(Icons.restart_alt_rounded),
+          ),
+          IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text("Configurações"),
+                  );
+                },
+              );
+            },
+            icon: Icon(Icons.pending_outlined),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Observer(
           builder: (_) {
@@ -53,9 +75,7 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
                         SizedBox(
                           width: 8,
                         ),
-                        OptionButonVolleyball(
-                          onPressed: _scorefVolleyball.resetPoint,
-                        ),
+                        Icon(Icons.sports_volleyball),
                         SizedBox(
                           width: 8,
                         ),

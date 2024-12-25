@@ -43,13 +43,13 @@ class _HomePageState extends State<HomePage> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 20),
                     child: Text(
-                      "Xadrex",
+                      "Xadrez",
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -6,7 +6,7 @@ class CardCustomScoreVolleyball extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       child: Text(
         scoreTime.toString(),
         style: Theme.of(context).textTheme.headlineMedium,

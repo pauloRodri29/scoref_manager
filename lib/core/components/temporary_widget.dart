@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CustomTempararyWidget extends StatelessWidget {
+class CustomTemporaryWidget extends StatelessWidget {
   final String message;
   final IconData icon;
-  const CustomTempararyWidget({
+  const CustomTemporaryWidget({
     super.key,
     required this.message,
     required this.icon,

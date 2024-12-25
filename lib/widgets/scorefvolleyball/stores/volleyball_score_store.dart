@@ -7,6 +7,10 @@ class VolleyballScoreStore = _VolleyballScoreStoreBase
     with _$VolleyballScoreStore;
 
 abstract class _VolleyballScoreStoreBase with Store {
+  // _VolleyballScoreStoreBase(){
+  //   SystemChrome.setPreferredOrientations(
+  //       [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+  // }
   // @observable
   // Future<bool> canVibrate = Vibrate.canVibrate;
 
@@ -78,6 +82,8 @@ abstract class _VolleyballScoreStoreBase with Store {
   int get isFullScore => fullScore;
 
 // Funções de alterações
+
+// Aumenta os pontos do time 1
   @action
   incrementPointTeam1() {
     if (fullScore != scoreTeam1) {
@@ -87,6 +93,7 @@ abstract class _VolleyballScoreStoreBase with Store {
     }
   }
 
+// Diminui os pontos do time 1
   @action
   decrementPointTeam1() {
     if (scoreTeam1 > 0) {
@@ -94,15 +101,17 @@ abstract class _VolleyballScoreStoreBase with Store {
     }
   }
 
+// Aumenta os pontos do time 2
   @action
   incrementPointTeam2() {
     if (fullScore != scoreTeam2) {
       scoreTeam2++;
-    } //else if (fullScore == scoreTeam2) {
-    // victoryTeam2++;
-    // }
+    } else if (fullScore == scoreTeam2) {
+      victoryTeam2++;
+    }
   }
 
+// Diminui os pontos do time 2
   @action
   decrementPointTeam2() {
     if (scoreTeam2 > 0) {
@@ -110,6 +119,7 @@ abstract class _VolleyballScoreStoreBase with Store {
     }
   }
 
+// Zera os pontos
   @action
   void resetPoint() {
     scoreTeam1 = 0;

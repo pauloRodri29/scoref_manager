@@ -92,6 +92,11 @@ class AppTheme {
         elevation: 4,
         shadowColor: AppColors.primary950,
       ),
+      inputDecorationTheme: InputDecorationTheme(
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 12.0, vertical: 2.0),
+        hintStyle: TextStyle(color: Colors.black.withOpacity(.6)),
+      ),
     );
   }
 
@@ -187,6 +192,12 @@ class AppTheme {
       buttonTheme: const ButtonThemeData(
         buttonColor: AppColors.primary700,
         textTheme: ButtonTextTheme.primary,
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        labelStyle: TextStyle(color: Colors.white),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 12.0, vertical: 2.0),
+        hintStyle: TextStyle(color: Colors.white.withOpacity(.6)),
       ),
     );
   }
