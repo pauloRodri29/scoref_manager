@@ -37,6 +37,16 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+      applicationVariants.all {
+        outputs.all {
+            if (buildType.name == "release") {
+                val appName = "ScoreFVolleyball"
+                val version = versionName
+                (this as com.android.build.gradle.internal.api.BaseVariantOutputImpl).outputFileName =
+                    "${appName}_v${version}.apk"
+            }
+        }
+    }
 }
 
 flutter {
