@@ -1,5 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:scoref_manager/app/core/ui/colors/color.dart';
 
 class SettingsVolleyball {
   String nameTeam1;
@@ -16,22 +16,13 @@ class SettingsVolleyball {
   SettingsVolleyball({
     this.nameTeam1 = "Time A",
     this.nameTeam2 = "Time B",
-    this.colorTeam1 = Colors.redAccent,
-    this.colorTeam2 = Colors.blueAccent,
-    this.scoreTeam1 = 10,
-    this.scoreTeam2 = 10,
-    this.victoryTeam1 = 1,
-    this.victoryTeam2 = 2,
+    this.colorTeam1 = AppColors.brandDark,
+    this.colorTeam2 = AppColors.crimson,
+    this.scoreTeam1 = 0,
+    this.scoreTeam2 = 0,
+    this.victoryTeam1 = 0,
+    this.victoryTeam2 = 0,
     this.time = 0,
     this.fullPoint = 12,
   });
-
-  int incrementScore(int value) => value++;
-
-  int decrementScore(int value) => value--;
-
-  void resetScore() {
-    scoreTeam1 = 0;
-    scoreTeam2 = 0;
-  }
 }

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:scoref_manager/app/widgets/home/home_page.dart';
-import 'package:scoref_manager/app/widgets/scorefvolleyball/volleyball_score.dart';
+import 'package:scoref_manager/app/widgets/scorefvolleyball/volleyball_score_page.dart';
 import 'package:scoref_manager/app/widgets/scorefchess/chess_score.dart';
 
 part 'routers.dart';
