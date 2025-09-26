@@ -92,7 +92,7 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
                             ?.copyWith(fontWeight: FontWeight.bold)),
                     const SizedBox(width: 6),
                     IconButton(
-                      onPressed: controller.resetSets,
+                      onPressed: (){},
                       icon: Icon(
                         Icons.refresh,
                         color:

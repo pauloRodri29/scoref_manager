@@ -9,7 +9,6 @@ class VolleyballScoreController extends GetxController {
   void incrementScoreA() {
     settings.update((val) {
       val!.scoreTeam1++;
-      _checkSetWinner();
     });
   }
 
@@ -22,7 +21,6 @@ class VolleyballScoreController extends GetxController {
   void incrementScoreB() {
     settings.update((val) {
       val!.scoreTeam2++;
-      _checkSetWinner();
     });
   }
 
@@ -40,40 +38,41 @@ class VolleyballScoreController extends GetxController {
     });
   }
 
-  void resetAll() {
-    settings.update((val) {
-      val!
-        ..scoreTeam1 = 0
-        ..scoreTeam2 = 0
-        ..victoryTeam1 = 0
-        ..victoryTeam2 = 0
-        ..time = 0;
-    });
-  }
+  // void resetAll() {
+  //   settings.update((val) {
+  //     val!
+  //       ..scoreTeam1 = 0
+  //       ..scoreTeam2 = 0
+  //       ..victoryTeam1 = 0
+  //       ..victoryTeam2 = 0
+  //       ..time = 0;
+  //   });
+  // }
 
-  void resetSets() {
-    settings.update((val) {
-      val!
-        ..victoryTeam1 = 0
-        ..victoryTeam2 = 0;
-    });
-  }
+  // void resetSets() {
+  //   settings.update((val) {
+  //     val!
+  //       ..victoryTeam1 = 0
+  //       ..victoryTeam2 = 0;
+  //   });
+  // }
 
   // ---- SETS ----
-  void _checkSetWinner() {
-    final s = settings.value;
-    if (s.scoreTeam1 >= s.fullPoint && s.scoreTeam1 > s.scoreTeam2) {
-      settings.update((val) {
-        val!.victoryTeam1++;
-        val.scoreTeam1 = 0;
-        val.scoreTeam2 = 0;
-      });
-    } else if (s.scoreTeam2 >= s.fullPoint && s.scoreTeam2 > s.scoreTeam1) {
-      settings.update((val) {
-        val!.victoryTeam2++;
-        val.scoreTeam1 = 0;
-        val.scoreTeam2 = 0;
-      });
-    }
-  }
+  // void _checkSetWinner() {
+  //   final s = settings.value;
+  //   if (s.scoreTeam1 >= s.fullPoint && s.scoreTeam1 > s.scoreTeam2) {
+  //     settings.update((val) {
+  //       val!.victoryTeam1++;
+  //       val.scoreTeam1 = 0;
+  //       val.scoreTeam2 = 0;
+  //     });
+  //   }
+  //   if (s.scoreTeam2 >= s.fullPoint && s.scoreTeam2 > s.scoreTeam1) {
+  //     settings.update((val) {
+  //       val!.victoryTeam2++;
+  //       val.scoreTeam1 = 0;
+  //       val.scoreTeam2 = 0;
+  //     });
+  //   }
+  // }
 }
