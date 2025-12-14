@@ -99,10 +99,58 @@ class AppTheme {
           color: AppColors.brandDark,
         ),
       ),
-      buttonTheme: const ButtonThemeData(
-        buttonColor: AppColors.brandMain,
-        textTheme: ButtonTextTheme.primary,
+      textButtonTheme: TextButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor: WidgetStatePropertyAll(AppColors.textOnPrimaryLight),
+          backgroundColor: WidgetStatePropertyAll(AppColors.brandMain),
+          padding: const WidgetStatePropertyAll(
+            EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          ),
+          shape: WidgetStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        ),
       ),
+
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor:
+              const WidgetStatePropertyAll(AppColors.textOnPrimaryLight),
+          backgroundColor: const WidgetStatePropertyAll(AppColors.brandMain),
+          padding: const WidgetStatePropertyAll(
+            EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          ),
+          shape: WidgetStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        ),
+      ),
+
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor: const WidgetStatePropertyAll(AppColors.brandMain),
+          side: const WidgetStatePropertyAll(
+            BorderSide(color: AppColors.brandMain, width: 1.5),
+          ),
+          padding: const WidgetStatePropertyAll(
+            EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          ),
+          shape: WidgetStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        ),
+      ),
+
+      // buttonTheme: const ButtonThemeData(
+      //   buttonColor: AppColors.brandMain,
+      //   textTheme: ButtonTextTheme.primary,
+      // ),
       cardTheme: const CardThemeData(
         elevation: 4,
         shadowColor: AppColors.shadow,
@@ -223,10 +271,58 @@ class AppTheme {
           borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
       ),
-      buttonTheme: const ButtonThemeData(
-        buttonColor: AppColors.brandDark,
-        textTheme: ButtonTextTheme.primary,
+      textButtonTheme: TextButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor: WidgetStatePropertyAll(AppColors.textOnPrimaryLight),
+          backgroundColor: WidgetStatePropertyAll(AppColors.brandMain),
+          padding: const WidgetStatePropertyAll(
+            EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          ),
+          shape: WidgetStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        ),
       ),
+
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor:
+              const WidgetStatePropertyAll(AppColors.textOnPrimaryLight),
+          backgroundColor: const WidgetStatePropertyAll(AppColors.brandMain),
+          padding: const WidgetStatePropertyAll(
+            EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          ),
+          shape: WidgetStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        ),
+      ),
+
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor: const WidgetStatePropertyAll(AppColors.brandMain),
+          side: const WidgetStatePropertyAll(
+            BorderSide(color: AppColors.brandMain, width: 1.5),
+          ),
+          padding: const WidgetStatePropertyAll(
+            EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          ),
+          shape: WidgetStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        ),
+      ),
+
+      // buttonTheme: const ButtonThemeData(
+      //   buttonColor: AppColors.brandDark,
+      //   textTheme: ButtonTextTheme.primary,
+      // ),
       inputDecorationTheme: InputDecorationTheme(
         labelStyle: const TextStyle(color: Colors.white),
         contentPadding:

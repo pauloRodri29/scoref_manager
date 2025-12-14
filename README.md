@@ -2,6 +2,8 @@
 
 Bem-vindo ao **Scoref Manager**, um projeto Flutter focado em criar uma solução simples e atrativa. 🚀
 
+Flutter:"3.29.0"
+
 ---
 
 ## 📱 Sobre o Projeto

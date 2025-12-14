@@ -26,4 +26,11 @@ class AppColors {
 
   // Extras
   static const Color shadow = Color(0xFF0F172A);
+
+  static const Color backgroundBlue = Color(0xFF1E88E5);
+  static const Color backgroundRed = Color(0xFFE53935);
+  static const Color backgroundGreen = Color(0xFF43A047);
+  static const Color backgroundPurple = Color(0xFF8E24AA);
+  static const Color backgroundOrange = Color(0xFFFB8C00);
+  static const Color backgroundDarkGrey = Color(0xFF424242);
 }

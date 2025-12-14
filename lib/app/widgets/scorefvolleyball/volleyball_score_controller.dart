@@ -1,78 +1,111 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
-import 'package:scoref_manager/app/core/models/settings_volleyball.dart';
+import 'package:scoref_manager/app/core/models/settings_manager.dart';
+import 'package:scoref_manager/app/core/ui/colors/color.dart';
+import 'package:scoref_manager/app/widgets/scorefvolleyball/models/player_volleyball.dart';
+import 'package:vibration/vibration.dart';
 
 class VolleyballScoreController extends GetxController {
-  /// Estado centralizado em um único objeto
-  var settings = SettingsVolleyball().obs;
+  Rx<SettingsManager> settingsManager = SettingsManager(fullPoints: 15).obs;
+  // final player = AudioPlayer();
+  Rx<PlayerVolleyball> player1 =
+      PlayerVolleyball(name: 'Player 1', color: AppColors.backgroundRed).obs;
+  Rx<PlayerVolleyball> player2 =
+      PlayerVolleyball(name: 'Player 2', color: AppColors.backgroundBlue).obs;
 
-  // ---- SCORE ----
-  void incrementScoreA() {
-    settings.update((val) {
-      val!.scoreTeam1++;
-    });
+  void changeFullPoints(int fullPoints) {
+    settingsManager.value = SettingsManager(fullPoints: fullPoints);
+    resetPoints();
+    update();
   }
 
-  void decrementScoreA() {
-    settings.update((val) {
-      if (val!.scoreTeam1 > 0) val.scoreTeam1--;
-    });
+  void increment(String player) async {
+    final target = player == player1.value.name ? player1 : player2;
+
+    if (target.value.points >= settingsManager.value.fullPoints) {
+      reactionpoints();
+      return;
+    }
+    target.value.points++;
+
+    if (target.value.points >= settingsManager.value.fullPoints) {
+      reactionpoints();
+    }
+
+    // if (player == player1.value.name) {
+    //   if (player1.value.points >= settingsManager.value.fullPoints) {
+    //     reactionpoints();
+    //     return;
+    //   }
+    //   player1.value.points++;
+    //   if (player1.value.points >= settingsManager.value.fullPoints) {
+    //     reactionpoints();
+    //   }
+    // } else if (player == player2.value.name) {
+    //   if (player2.value.points >= settingsManager.value.fullPoints) {
+    //     reactionpoints();
+    //     return;
+    //   }
+    //   player2.value.points++;
+    //   if (player2.value.points >= settingsManager.value.fullPoints) {
+    //     reactionpoints();
+    //   }
+    // }
+    update();
   }
 
-  void incrementScoreB() {
-    settings.update((val) {
-      val!.scoreTeam2++;
-    });
+  void decrement(String player) {
+    if (player == player1.value.name) {
+      if (player1.value.points <= 0) {
+        vibrate();
+        return;
+      }
+      player1.value.points--;
+    } else if (player == player2.value.name) {
+      if (player2.value.points <= 0) {
+        vibrate();
+        return;
+      }
+      player2.value.points--;
+    }
+    update();
   }
 
-  void decrementScoreB() {
-    settings.update((val) {
-      if (val!.scoreTeam2 > 0) val.scoreTeam2--;
-    });
+  void reactionpoints() {
+    playSound();
+    vibrate();
   }
 
-  // ---- RESET ----
-  void resetScores() {
-    settings.update((val) {
-      val!.scoreTeam1 = 0;
-      val.scoreTeam2 = 0;
-    });
+  void resetPoints() {
+    player1.value.points = 0;
+    player2.value.points = 0;
+    update();
   }
 
-  // void resetAll() {
-  //   settings.update((val) {
-  //     val!
-  //       ..scoreTeam1 = 0
-  //       ..scoreTeam2 = 0
-  //       ..victoryTeam1 = 0
-  //       ..victoryTeam2 = 0
-  //       ..time = 0;
-  //   });
+  void resetVitory() {
+    player1.value.victory = 0;
+    player2.value.victory = 0;
+    update();
+  }
+
+  void vibrate() async {
+    if (await Vibration.hasVibrator() ?? false) {
+      Vibration.vibrate(duration: 200);
+    }
+  }
+
+  void playSound() {
+    final p = AudioPlayer();
+    p.play(AssetSource('audio/alert_metal.mp3'));
+  }
+
+  // void playSound() {
+  //   player.play(AssetSource('audio/alert_metal.mp3'));
   // }
 
-  // void resetSets() {
-  //   settings.update((val) {
-  //     val!
-  //       ..victoryTeam1 = 0
-  //       ..victoryTeam2 = 0;
-  //   });
-  // }
-
-  // ---- SETS ----
-  // void _checkSetWinner() {
-  //   final s = settings.value;
-  //   if (s.scoreTeam1 >= s.fullPoint && s.scoreTeam1 > s.scoreTeam2) {
-  //     settings.update((val) {
-  //       val!.victoryTeam1++;
-  //       val.scoreTeam1 = 0;
-  //       val.scoreTeam2 = 0;
-  //     });
-  //   }
-  //   if (s.scoreTeam2 >= s.fullPoint && s.scoreTeam2 > s.scoreTeam1) {
-  //     settings.update((val) {
-  //       val!.victoryTeam2++;
-  //       val.scoreTeam1 = 0;
-  //       val.scoreTeam2 = 0;
-  //     });
-  //   }
-  // }
+  void changeSettings(int fullPoints) {
+    settingsManager.value = SettingsManager(fullPoints: fullPoints);
+    resetPoints();
+    update();
+  }
 }
