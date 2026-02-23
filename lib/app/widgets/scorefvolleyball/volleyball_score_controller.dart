@@ -1,9 +1,9 @@
-import 'package:audioplayers/audioplayers.dart';
+import 'dart:developer';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:scoref_manager/app/core/models/settings_manager.dart';
 import 'package:scoref_manager/app/core/ui/colors/color.dart';
 import 'package:scoref_manager/app/widgets/scorefvolleyball/models/player_volleyball.dart';
-import 'package:vibration/vibration.dart';
 
 class VolleyballScoreController extends GetxController {
   Rx<SettingsManager> settingsManager = SettingsManager(fullPoints: 15).obs;
@@ -13,9 +13,52 @@ class VolleyballScoreController extends GetxController {
   Rx<PlayerVolleyball> player2 =
       PlayerVolleyball(name: 'Player 2', color: AppColors.backgroundBlue).obs;
 
-  void changeFullPoints(int fullPoints) {
-    settingsManager.value = SettingsManager(fullPoints: fullPoints);
-    resetPoints();
+  RxBool showButton = true.obs;
+
+  List<Color> colors = [
+    AppColors.backgroundRed,
+    AppColors.backgroundBlue,
+    AppColors.backgroundGreen,
+    AppColors.brandLight,
+    AppColors.backgroundPurple,
+    AppColors.backgroundOrange,
+    AppColors.brandMain,
+    AppColors.brandDark,
+  ];
+
+  void changeShowButton() {
+    showButton.value = !showButton.value;
+    log(showButton.value.toString());
+    update();
+  }
+
+  void changeShowButtonWithValue(bool value) {
+    showButton.value = value;
+    log(showButton.value.toString());
+    update();
+  }
+
+  void changeNamePlayer({
+    required String name,
+    required PlayerVolleyball player,
+  }) {
+    if (player.name == player1.value.name) {
+      player1.value.name = name;
+    } else {
+      player2.value.name = name;
+    }
+    update();
+  }
+
+  void changeColorsPlayer({
+    required Color color,
+    required PlayerVolleyball player,
+  }) {
+    if (player.name == player1.value.name) {
+      player1.value.color = color;
+    } else {
+      player2.value.color = color;
+    }
     update();
   }
 
@@ -76,9 +119,18 @@ class VolleyballScoreController extends GetxController {
     vibrate();
   }
 
-  void resetPoints() {
-    player1.value.points = 0;
-    player2.value.points = 0;
+  void resetPoints({PlayerVolleyball? player}) {
+    if (player != null) {
+      if (player.name == player1.value.name) {
+        player1.value.points = 0;
+      } else {
+        player2.value.points = 0;
+      }
+    } else {
+      player1.value.points = 0;
+      player2.value.points = 0;
+    }
+
     update();
   }
 
@@ -89,14 +141,14 @@ class VolleyballScoreController extends GetxController {
   }
 
   void vibrate() async {
-    if (await Vibration.hasVibrator() ?? false) {
-      Vibration.vibrate(duration: 200);
-    }
+    // if (await Vibration.hasVibrator() ?? false) {
+    //   Vibration.vibrate(duration: 200);
+    // }
   }
 
   void playSound() {
-    final p = AudioPlayer();
-    p.play(AssetSource('audio/alert_metal.mp3'));
+    // final p = AudioPlayer();
+    // p.play(AssetSource('audio/alert_metal.mp3'));
   }
 
   // void playSound() {
@@ -105,7 +157,16 @@ class VolleyballScoreController extends GetxController {
 
   void changeSettings(int fullPoints) {
     settingsManager.value = SettingsManager(fullPoints: fullPoints);
-    resetPoints();
+
+    // Verifica apenas quem ultrapassou o novo limite
+    if (player1.value.points > fullPoints) {
+      resetPoints(player: player1.value);
+    }
+
+    if (player2.value.points > fullPoints) {
+      resetPoints(player: player2.value);
+    }
+
     update();
   }
 }

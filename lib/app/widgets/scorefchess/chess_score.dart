@@ -21,6 +21,7 @@ class _ScorefChessPageState extends State<ScorefChessPage> {
               height: 200,
               width: 200,
               child: CustomTextFieldDefault(
+                text: "Teste",
                 textEditingController: _textEdit,
                 nameHint: "Teste time 1",
               ),

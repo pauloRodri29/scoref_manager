@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scoref_manager/app/core/ui/colors/color.dart';
 
 class DialogsDefault extends StatelessWidget {
   final String? title;
@@ -7,6 +8,7 @@ class DialogsDefault extends StatelessWidget {
   final List<Widget> children;
   final double? width;
   final double? height;
+  final Color? colorCard;
 
   const DialogsDefault({
     super.key,
@@ -15,6 +17,7 @@ class DialogsDefault extends StatelessWidget {
     this.width,
     this.height,
     this.titleWidget,
+    this.colorCard = AppColors.backgroundDark,
   });
 
   @override
@@ -30,6 +33,7 @@ class DialogsDefault extends StatelessWidget {
           child: Align(
             alignment: Alignment.center,
             child: Card(
+              color: colorCard,
               // decoration: BoxDecoration(
               //   borderRadius: BorderRadius.circular(20),
               //   boxShadow: [
@@ -53,10 +57,8 @@ class DialogsDefault extends StatelessWidget {
                         titleWidget ??
                             Text(
                               title ?? "---",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  color: AppColors.textOnPrimaryLight),
                             ),
                         Align(
                           alignment: Alignment.topRight,
@@ -66,7 +68,10 @@ class DialogsDefault extends StatelessWidget {
                                 Get.back();
                               });
                             },
-                            child: const Icon(Icons.close),
+                            child: const Icon(
+                              Icons.close,
+                              color: AppColors.backgroundLight,
+                            ),
                           ),
                         ),
                       ],

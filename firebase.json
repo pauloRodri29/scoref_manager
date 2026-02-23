@@ -1,0 +1,37 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "app-sanesoft",
+          "appId": "1:146746211247:android:34e10398ab3cd1381e8d5a",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "app-sanesoft",
+          "configurations": {
+            "android": "1:146746211247:android:34e10398ab3cd1381e8d5a",
+            "web": "1:146746211247:web:970af97364bb326d1e8d5a",
+            "windows": "1:146746211247:web:d8bc6155872db50e1e8d5a"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

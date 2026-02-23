@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "146746211247",
+    "project_id": "app-sanesoft",
+    "storage_bucket": "app-sanesoft.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146746211247:android:34e10398ab3cd1381e8d5a",
+        "android_client_info": {
+          "package_name": "com.example.scoref_manager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJdTqsG6ZwOqghjRCQV08D3-byTrF-bVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
