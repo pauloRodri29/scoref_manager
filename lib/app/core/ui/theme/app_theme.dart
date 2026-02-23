@@ -293,7 +293,7 @@ class AppTheme {
           fontSize: 14,
           fontWeight: FontWeight.w700,
           color: AppColors.textPrimaryLight),
-    );
+    ).apply(fontFamily: 'Montserrat');
   }
 
   static TextTheme _textThemeDark() {
@@ -326,6 +326,6 @@ class AppTheme {
           fontSize: 14,
           fontWeight: FontWeight.w700,
           color: AppColors.textPrimaryDark),
-    );
+    ).apply(fontFamily: 'Montserrat');
   }
 }
