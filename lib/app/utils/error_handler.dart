@@ -19,7 +19,6 @@ class ErrorHandler {
       case AppErrorType.timeout:
         return 'O tempo da solicitação expirou. Tente novamente.';
       case AppErrorType.unknown:
-      default:
         return 'Algo deu errado. Tente novamente.';
     }
   }

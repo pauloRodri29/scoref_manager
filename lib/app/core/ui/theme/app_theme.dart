@@ -1,338 +1,331 @@
-// import 'package:flutter/material.dart';
-// import 'package:scoref_manager/app/core/ui/colors/color.dart';
+import 'package:flutter/material.dart';
+import 'package:scoref_manager/app/core/ui/colors/color.dart';
 
-// class AppTheme {
-//   static ThemeData lightTheme(BuildContext context) {
-//     return ThemeData(
-//       useMaterial3: true,
-//       brightness: Brightness.light,
-//       primaryColor: AppColors.brandMain,
-//       scaffoldBackgroundColor: AppColors.backgroundLight,
-//       appBarTheme: const AppBarTheme(
-//         backgroundColor: AppColors.brandMain,
-//         foregroundColor: AppColors.textOnPrimaryLight,
-//       ),
-//       colorScheme: const ColorScheme.light(
-//         primary: AppColors.brandMain,
-//         onPrimary: AppColors.textOnPrimaryLight,
-//         secondary: AppColors.brandDark,
-//         onSecondary: AppColors.textOnPrimaryLight,
-//         surface: AppColors.surfaceLight,
-//         onSurface: AppColors.textPrimaryLight,
-//         error: AppColors.error,
-//         onError: AppColors.textOnPrimaryLight,
-//       ),
-//       textTheme: const TextTheme(
-//         displayLarge: TextStyle(
-//           fontSize: 250,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.textPrimaryLight,
-//         ),
-//         displayMedium: TextStyle(
-//           fontSize: 28,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.textSecondaryLight,
-//         ),
-//         displaySmall: TextStyle(
-//           fontSize: 22,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.textSecondaryLight,
-//         ),
-//         headlineLarge: TextStyle(
-//           fontSize: 24,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.textPrimaryLight,
-//         ),
-//         headlineMedium: TextStyle(
-//           fontSize: 20,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.textSecondaryLight,
-//         ),
-//         headlineSmall: TextStyle(
-//           fontSize: 18,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.textSecondaryLight,
-//         ),
-//         titleLarge: TextStyle(
-//           fontSize: 22,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.textPrimaryLight,
-//         ),
-//         titleMedium: TextStyle(
-//           fontSize: 18,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.textSecondaryLight,
-//         ),
-//         titleSmall: TextStyle(
-//           fontSize: 16,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.textSecondaryLight,
-//         ),
-//         bodyLarge: TextStyle(
-//           fontSize: 18,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.textPrimaryLight,
-//         ),
-//         bodyMedium: TextStyle(
-//           fontSize: 16,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.textSecondaryLight,
-//         ),
-//         bodySmall: TextStyle(
-//           fontSize: 14,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.textSecondaryLight,
-//         ),
-//         labelLarge: TextStyle(
-//           fontSize: 16,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.brandMain,
-//         ),
-//         labelMedium: TextStyle(
-//           fontSize: 14,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.brandDark,
-//         ),
-//         labelSmall: TextStyle(
-//           fontSize: 12,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.brandDark,
-//         ),
-//       ),
-//       textButtonTheme: TextButtonThemeData(
-//         style: ButtonStyle(
-//           foregroundColor: WidgetStatePropertyAll(AppColors.textOnPrimaryLight),
-//           backgroundColor: WidgetStatePropertyAll(AppColors.brandMain),
-//           padding: const WidgetStatePropertyAll(
-//             EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-//           ),
-//           shape: WidgetStatePropertyAll(
-//             RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(12),
-//             ),
-//           ),
-//         ),
-//       ),
+class AppTheme {
+  static ThemeData light() {
+    final colorScheme = const ColorScheme.light(
+      primary: AppColors.brandMain,
+      onPrimary: AppColors.textOnPrimaryLight,
+      secondary: AppColors.brandDark,
+      onSecondary: AppColors.textOnPrimaryLight,
+      surface: AppColors.surfaceLight,
+      onSurface: AppColors.textPrimaryLight,
+      error: AppColors.error,
+      onError: AppColors.textOnPrimaryLight,
+    );
 
-//       elevatedButtonTheme: ElevatedButtonThemeData(
-//         style: ButtonStyle(
-//           foregroundColor:
-//               const WidgetStatePropertyAll(AppColors.textOnPrimaryLight),
-//           backgroundColor: const WidgetStatePropertyAll(AppColors.brandMain),
-//           padding: const WidgetStatePropertyAll(
-//             EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-//           ),
-//           shape: WidgetStatePropertyAll(
-//             RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(12),
-//             ),
-//           ),
-//         ),
-//       ),
+    return ThemeData(
+      useMaterial3: true,
+      brightness: Brightness.light,
+      colorScheme: colorScheme,
 
-//       outlinedButtonTheme: OutlinedButtonThemeData(
-//         style: ButtonStyle(
-//           foregroundColor: const WidgetStatePropertyAll(AppColors.brandMain),
-//           side: const WidgetStatePropertyAll(
-//             BorderSide(color: AppColors.brandMain, width: 1.5),
-//           ),
-//           padding: const WidgetStatePropertyAll(
-//             EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-//           ),
-//           shape: WidgetStatePropertyAll(
-//             RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(12),
-//             ),
-//           ),
-//         ),
-//       ),
+      // Base
+      scaffoldBackgroundColor: AppColors.backgroundLight,
 
-//       // buttonTheme: const ButtonThemeData(
-//       //   buttonColor: AppColors.brandMain,
-//       //   textTheme: ButtonTextTheme.primary,
-//       // ),
-//       cardTheme: const CardThemeData(
-//         elevation: 4,
-//         shadowColor: AppColors.shadow,
-//       ),
-//       inputDecorationTheme: InputDecorationTheme(
-//         contentPadding:
-//             const EdgeInsets.symmetric(horizontal: 12.0, vertical: 2.0),
-//         hintStyle: TextStyle(color: Colors.black.withValues(alpha: .6)),
-//       ),
-//       iconTheme: const IconThemeData(
-//         color: AppColors.textPrimaryLight,
-//         size: 24,
-//       ),
-//     );
-//   }
+      // AppBar
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppColors.backgroundDark,
+        foregroundColor: AppColors.textPrimaryDark,
+        elevation: 0,
+        centerTitle: true,
+      ),
 
-//   static ThemeData darkTheme(BuildContext context) {
-//     return ThemeData(
-//       useMaterial3: true,
-//       brightness: Brightness.dark,
-//       primaryColor: AppColors.brandDark,
-//       scaffoldBackgroundColor: AppColors.backgroundDark,
-//       appBarTheme: const AppBarTheme(
-//         backgroundColor: AppColors.surfaceDark,
-//         foregroundColor: AppColors.textOnPrimaryDark,
-//       ),
-//       colorScheme: const ColorScheme.dark(
-//         primary: AppColors.brandDark,
-//         onPrimary: AppColors.textOnPrimaryDark,
-//         secondary: AppColors.brandMain,
-//         onSecondary: AppColors.textOnPrimaryDark,
-//         surface: AppColors.surfaceDark,
-//         onSurface: AppColors.textPrimaryDark,
-//         error: AppColors.error,
-//         onError: AppColors.textOnPrimaryDark,
-//       ),
-//       textTheme: const TextTheme(
-//         displayLarge: TextStyle(
-//           fontSize: 250,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.textPrimaryDark,
-//         ),
-//         displayMedium: TextStyle(
-//           fontSize: 28,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.textSecondaryDark,
-//         ),
-//         displaySmall: TextStyle(
-//           fontSize: 22,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.textSecondaryDark,
-//         ),
-//         headlineLarge: TextStyle(
-//           fontSize: 24,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.textPrimaryDark,
-//         ),
-//         headlineMedium: TextStyle(
-//           fontSize: 20,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.textSecondaryDark,
-//         ),
-//         headlineSmall: TextStyle(
-//           fontSize: 18,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.textSecondaryDark,
-//         ),
-//         titleLarge: TextStyle(
-//           fontSize: 22,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.textPrimaryDark,
-//         ),
-//         titleMedium: TextStyle(
-//           fontSize: 18,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.textSecondaryDark,
-//         ),
-//         titleSmall: TextStyle(
-//           fontSize: 16,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.textSecondaryDark,
-//         ),
-//         bodyLarge: TextStyle(
-//           fontSize: 18,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.textPrimaryDark,
-//         ),
-//         bodyMedium: TextStyle(
-//           fontSize: 16,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.textSecondaryDark,
-//         ),
-//         bodySmall: TextStyle(
-//           fontSize: 14,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.textSecondaryDark,
-//         ),
-//         labelLarge: TextStyle(
-//           fontSize: 16,
-//           fontWeight: FontWeight.bold,
-//           color: AppColors.brandMain,
-//         ),
-//         labelMedium: TextStyle(
-//           fontSize: 14,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.brandDark,
-//         ),
-//         labelSmall: TextStyle(
-//           fontSize: 12,
-//           fontWeight: FontWeight.normal,
-//           color: AppColors.brandDark,
-//         ),
-//       ),
-//       cardTheme: const CardThemeData(
-//         elevation: 4,
-//         shadowColor: AppColors.shadow,
-//         shape: RoundedRectangleBorder(
-//           borderRadius: BorderRadius.all(Radius.circular(8)),
-//         ),
-//       ),
-//       textButtonTheme: TextButtonThemeData(
-//         style: ButtonStyle(
-//           foregroundColor: WidgetStatePropertyAll(AppColors.textOnPrimaryLight),
-//           backgroundColor: WidgetStatePropertyAll(AppColors.brandMain),
-//           padding: const WidgetStatePropertyAll(
-//             EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-//           ),
-//           shape: WidgetStatePropertyAll(
-//             RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(12),
-//             ),
-//           ),
-//         ),
-//       ),
+      // Text
+      textTheme: _textThemeLight(),
 
-//       elevatedButtonTheme: ElevatedButtonThemeData(
-//         style: ButtonStyle(
-//           foregroundColor:
-//               const WidgetStatePropertyAll(AppColors.textOnPrimaryLight),
-//           backgroundColor: const WidgetStatePropertyAll(AppColors.brandMain),
-//           padding: const WidgetStatePropertyAll(
-//             EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-//           ),
-//           shape: WidgetStatePropertyAll(
-//             RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(12),
-//             ),
-//           ),
-//         ),
-//       ),
+      // Cards / surfaces
+      cardTheme: CardThemeData(
+        color: AppColors.surfaceLight,
+        elevation: 2,
+        shadowColor: AppColors.shadow.withValues(alpha: 0.15),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+      ),
 
-//       outlinedButtonTheme: OutlinedButtonThemeData(
-//         style: ButtonStyle(
-//           foregroundColor: const WidgetStatePropertyAll(AppColors.brandMain),
-//           side: const WidgetStatePropertyAll(
-//             BorderSide(color: AppColors.brandMain, width: 1.5),
-//           ),
-//           padding: const WidgetStatePropertyAll(
-//             EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-//           ),
-//           shape: WidgetStatePropertyAll(
-//             RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(12),
-//             ),
-//           ),
-//         ),
-//       ),
+      // Inputs
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: AppColors.surfaceLight,
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        hintStyle: TextStyle(
+          color: AppColors.textSecondaryLight.withValues(alpha: 0.8),
+        ),
+        labelStyle: const TextStyle(color: AppColors.textSecondaryLight),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(
+            color: AppColors.textSecondaryLight.withValues(alpha: 0.15),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.brandMain, width: 2),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.error, width: 1.5),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.error, width: 2),
+        ),
+      ),
 
-//       // buttonTheme: const ButtonThemeData(
-//       //   buttonColor: AppColors.brandDark,
-//       //   textTheme: ButtonTextTheme.primary,
-//       // ),
-//       inputDecorationTheme: InputDecorationTheme(
-//         labelStyle: const TextStyle(color: Colors.white),
-//         contentPadding:
-//             const EdgeInsets.symmetric(horizontal: 12.0, vertical: 2.0),
-//         hintStyle: TextStyle(color: Colors.white.withValues(alpha: .6)),
-//       ),
-//       iconTheme: const IconThemeData(
-//         color: AppColors.textPrimaryDark,
-//         size: 24,
-//       ),
-//     );
-//   }
-// }
+      // Icons
+      iconTheme: const IconThemeData(
+        color: AppColors.textPrimaryLight,
+        size: 24,
+      ),
+
+      // Buttons
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.brandMain,
+          foregroundColor: AppColors.textOnPrimaryLight,
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+          textStyle: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+      ),
+
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          backgroundColor: AppColors.brandMain,
+          foregroundColor: AppColors.textOnPrimaryLight,
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+          textStyle: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+      ),
+
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: AppColors.brandMain,
+          side: const BorderSide(color: AppColors.brandMain, width: 1.5),
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+          textStyle: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+      ),
+
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: AppColors.brandDark,
+          textStyle: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+      ),
+
+      // IconButton: aqui entra o que você tentou fazer antes 🙂
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(
+          foregroundColor: AppColors.textPrimaryLight,
+        ),
+      ),
+
+      // Divider
+      dividerTheme: DividerThemeData(
+        color: AppColors.textSecondaryLight.withValues(alpha: 0.15),
+        thickness: 1,
+        space: 1,
+      ),
+    );
+  }
+
+  static ThemeData dark() {
+    final colorScheme = const ColorScheme.dark(
+      primary: AppColors.brandMain,
+      onPrimary: AppColors.textOnPrimaryDark,
+      secondary: AppColors.brandLight,
+      onSecondary: AppColors.textOnPrimaryDark,
+      surface: AppColors.surfaceDark,
+      onSurface: AppColors.textPrimaryDark,
+      error: AppColors.error,
+      onError: AppColors.textOnPrimaryDark,
+    );
+
+    return ThemeData(
+      useMaterial3: true,
+      brightness: Brightness.dark,
+      colorScheme: colorScheme,
+      scaffoldBackgroundColor: AppColors.backgroundDark,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppColors.backgroundDark,
+        foregroundColor: AppColors.textPrimaryDark,
+        elevation: 0,
+        centerTitle: true,
+      ),
+      textTheme: _textThemeDark(),
+      cardTheme: CardThemeData(
+        color: AppColors.surfaceDark,
+        elevation: 2,
+        shadowColor: Colors.black.withValues(alpha: 0.35),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: AppColors.surfaceDark,
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        hintStyle: TextStyle(
+          color: AppColors.textSecondaryDark.withValues(alpha: 0.85),
+        ),
+        labelStyle: const TextStyle(color: AppColors.textSecondaryDark),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(
+            color: AppColors.textSecondaryDark.withValues(alpha: 0.18),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.brandMain, width: 2),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.error, width: 1.5),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.error, width: 2),
+        ),
+      ),
+      iconTheme: const IconThemeData(
+        color: AppColors.textPrimaryDark,
+        size: 24,
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.brandMain,
+          foregroundColor: AppColors.textOnPrimaryDark,
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+          textStyle: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+      ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          backgroundColor: AppColors.brandMain,
+          foregroundColor: AppColors.textOnPrimaryDark,
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+          textStyle: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: AppColors.brandLight,
+          side: const BorderSide(color: AppColors.brandLight, width: 1.5),
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+          textStyle: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: AppColors.brandLight,
+          textStyle: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+      ),
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(
+          foregroundColor: AppColors.textPrimaryDark,
+        ),
+      ),
+      dividerTheme: DividerThemeData(
+        color: AppColors.textSecondaryDark.withValues(alpha: 0.18),
+        thickness: 1,
+        space: 1,
+      ),
+    );
+  }
+
+  static TextTheme _textThemeLight() {
+    return const TextTheme(
+      headlineLarge: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimaryLight),
+      headlineMedium: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimaryLight),
+      titleLarge: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimaryLight),
+      titleMedium: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: AppColors.textSecondaryLight),
+      bodyLarge: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: AppColors.textPrimaryLight),
+      bodyMedium: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: AppColors.textSecondaryLight),
+      labelLarge: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimaryLight),
+    );
+  }
+
+  static TextTheme _textThemeDark() {
+    return const TextTheme(
+      headlineLarge: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimaryDark),
+      headlineMedium: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimaryDark),
+      titleLarge: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimaryDark),
+      titleMedium: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: AppColors.textSecondaryDark),
+      bodyLarge: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: AppColors.textPrimaryDark),
+      bodyMedium: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: AppColors.textSecondaryDark),
+      labelLarge: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimaryDark),
+    );
+  }
+}

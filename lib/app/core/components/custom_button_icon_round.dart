@@ -26,7 +26,7 @@ class CustomButtonIconRound extends StatelessWidget {
       height: 40,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: colorBackground ?? Theme.of(context).iconTheme.color,
+        color: Theme.of(context).cardTheme.color,
         shape: BoxShape.circle,
         boxShadow: boxShadow ??
             [
@@ -40,7 +40,7 @@ class CustomButtonIconRound extends StatelessWidget {
       child: IconButton(
         onPressed: onTap,
         icon: Icon(icon),
-        color: colorIcon,
+        color: Theme.of(context).iconTheme.color,
         iconSize: sizeIcon ?? 20,
       ),
     );
