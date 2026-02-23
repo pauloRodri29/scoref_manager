@@ -26,11 +26,22 @@ class AppColors {
 
   // Extras
   static const Color shadow = Color(0xFF0F172A);
-
-  static const Color backgroundBlue = Color(0xFF1E88E5);
-  static const Color backgroundRed = Color(0xFFE53935);
-  static const Color backgroundGreen = Color(0xFF43A047);
-  static const Color backgroundPurple = Color(0xFF8E24AA);
-  static const Color backgroundOrange = Color(0xFFFB8C00);
   static const Color backgroundDarkGrey = Color(0xFF424242);
+
+// Scoreboard Colors (High Contrast)
+  static const Color scoreNavy = Color(0xFF0F172A);
+  static const Color scoreRoyalBlue = Color(0xFF1D4ED8);
+  static const Color scoreSky = Color(0xFF0284C7);
+  static const Color scoreTeal = Color(0xFF0D9488);
+  static const Color scoreEmerald = Color(0xFF059669);
+  static const Color scoreLime = Color(0xFF65A30D);
+  static const Color scoreAmber = Color(0xFFD97706);
+  static const Color scoreOrangeDeep = Color(0xFFEA580C);
+  static const Color scoreCrimson = Color(0xFFB91C1C);
+  static const Color scoreWine = Color(0xFF7F1D1D);
+  static const Color scorePurpleDeep = Color(0xFF6D28D9);
+  static const Color scoreIndigo = Color(0xFF4338CA);
+  static const Color scoreMagenta = Color(0xFFBE185D);
+  static const Color scoreSteel = Color(0xFF334155);
+  static const Color scoreCharcoal = Color(0xFF1E293B);
 }

@@ -52,17 +52,18 @@ class _QuantitySelectorState extends State<QuantitySelector> {
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: const Icon(Icons.remove, color: AppColors.backgroundLight),
+            icon: Icon(Icons.remove, color: Theme.of(context).iconTheme.color),
             onPressed: _decrement,
           ),
           Text(
             quantity.toString(),
-            style: TextStyle(color: AppColors.textOnPrimaryLight),
+            style:
+                TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color),
           ),
           IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.add,
-              color: AppColors.backgroundLight,
+              color: Theme.of(context).iconTheme.color,
             ),
             onPressed: _increment,
           ),

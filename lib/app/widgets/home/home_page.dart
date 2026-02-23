@@ -36,37 +36,33 @@ class HomePage extends GetView<HomeController> {
                   crossAxisCount: Get.width < 800 ? 2 : 3,
                 ),
                 children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.toNamed(Routers.VOLLEYBALL);
-                      },
-                      // Navigator.pushNamed(context, AppRoutes.i.volleyballPage),
-                      child: Card(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 20),
-                          child: Text(
-                            "Volei",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: fontSize),
-                          ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(Routers.VOLLEYBALL);
+                    },
+                    // Navigator.pushNamed(context, AppRoutes.i.volleyballPage),
+                    child: Card(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 20),
+                        child: Text(
+                          "Volei",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: fontSize),
                         ),
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.toNamed(Routers.CHESS);
-                      },
-                      child: Card(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 20),
-                          child: Text(
-                            "Xadrez",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: fontSize),
-                          ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(Routers.CHESS);
+                    },
+                    child: Card(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 20),
+                        child: Text(
+                          "Xadrez",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: fontSize),
                         ),
                       ),
                     ),

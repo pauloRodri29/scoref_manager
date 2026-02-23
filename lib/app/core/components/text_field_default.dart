@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scoref_manager/app/core/ui/colors/color.dart';
 
 class CustomTextFieldDefault extends StatelessWidget {
   final TextEditingController? textEditingController;
@@ -17,10 +16,14 @@ class CustomTextFieldDefault extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textCapitalization: TextCapitalization.words,
       validator: validator,
-      style: const TextStyle(color: AppColors.textOnPrimaryLight),
+      style: Theme.of(context).textTheme.bodyLarge,
       controller: textEditingController,
-      decoration: InputDecoration(label: Text(text)),
+      decoration: InputDecoration(
+        labelText: text,
+        hintText: nameHint,
+      ),
     );
   }
 }

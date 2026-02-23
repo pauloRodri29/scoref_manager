@@ -134,35 +134,41 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
                           ),
                         ],
                       ),
-                      Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              volleyballScoreController.player1.value.victory
-                                  .toString(),
-                              style: TextStyle(
-                                color: AppColors.backgroundLight,
-                              ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            volleyballScoreController.player1.value.victory
+                                .toString(),
+                            style: TextStyle(
+                              color: AppColors.backgroundLight,
+                              fontSize: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge
+                                  ?.fontSize,
                             ),
-                            const SizedBox(width: 6),
-                            IconButton(
-                              onPressed: controller.resetVitory,
-                              icon: Icon(
-                                Icons.refresh,
-                                color: AppColors.backgroundLight,
-                              ),
+                          ),
+                          const SizedBox(width: 6),
+                          IconButton(
+                            onPressed: controller.resetVitory,
+                            icon: Icon(
+                              Icons.refresh,
+                              color: AppColors.backgroundLight,
                             ),
-                            const SizedBox(width: 6),
-                            Text(
-                              volleyballScoreController.player2.value.victory
-                                  .toString(),
-                              style: TextStyle(
-                                color: AppColors.backgroundLight,
-                              ),
+                          ),
+                          const SizedBox(width: 6),
+                          Text(
+                            volleyballScoreController.player2.value.victory
+                                .toString(),
+                            style: TextStyle(
+                              color: AppColors.backgroundLight,
+                              fontSize: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge
+                                  ?.fontSize,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       Align(
                         alignment: AlignmentGeometry.centerRight,
@@ -478,6 +484,8 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
                   onTap: () {
                     Get.dialog(DialogsSettings(
                       volleyballScoreController: volleyballScoreController,
+                      player1: controller.player1.value,
+                      player2: controller.player2.value,
                     ));
                   },
                   child: Icon(

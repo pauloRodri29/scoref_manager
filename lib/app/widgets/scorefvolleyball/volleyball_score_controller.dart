@@ -7,23 +7,31 @@ import 'package:scoref_manager/app/widgets/scorefvolleyball/models/player_volley
 
 class VolleyballScoreController extends GetxController {
   Rx<SettingsManager> settingsManager = SettingsManager(fullPoints: 15).obs;
-  // final player = AudioPlayer();
+  RxInt selectSession = 0.obs;
+
   Rx<PlayerVolleyball> player1 =
-      PlayerVolleyball(name: 'Player 1', color: AppColors.backgroundRed).obs;
+      PlayerVolleyball(name: 'Time 1', color: AppColors.scoreCrimson).obs;
   Rx<PlayerVolleyball> player2 =
-      PlayerVolleyball(name: 'Player 2', color: AppColors.backgroundBlue).obs;
+      PlayerVolleyball(name: 'Time 2', color: AppColors.scoreRoyalBlue).obs;
 
   RxBool showButton = true.obs;
 
   List<Color> colors = [
-    AppColors.backgroundRed,
-    AppColors.backgroundBlue,
-    AppColors.backgroundGreen,
-    AppColors.brandLight,
-    AppColors.backgroundPurple,
-    AppColors.backgroundOrange,
-    AppColors.brandMain,
-    AppColors.brandDark,
+    AppColors.scoreAmber,
+    AppColors.scoreCharcoal,
+    AppColors.scoreCrimson,
+    AppColors.scoreEmerald,
+    AppColors.scoreIndigo,
+    AppColors.scoreLime,
+    AppColors.scoreMagenta,
+    AppColors.scoreNavy,
+    AppColors.scoreOrangeDeep,
+    AppColors.scorePurpleDeep,
+    AppColors.scoreRoyalBlue,
+    AppColors.scoreSky,
+    AppColors.scoreSteel,
+    AppColors.scoreTeal,
+    AppColors.scoreWine,
   ];
 
   void changeShowButton() {

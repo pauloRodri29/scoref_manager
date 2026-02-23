@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:scoref_manager/app/core/ui/colors/color.dart';
 
 class DialogsDefault extends StatelessWidget {
   final String? title;
@@ -17,7 +16,7 @@ class DialogsDefault extends StatelessWidget {
     this.width,
     this.height,
     this.titleWidget,
-    this.colorCard = AppColors.backgroundDark,
+    this.colorCard,
   });
 
   @override
@@ -33,17 +32,7 @@ class DialogsDefault extends StatelessWidget {
           child: Align(
             alignment: Alignment.center,
             child: Card(
-              color: colorCard,
-              // decoration: BoxDecoration(
-              //   borderRadius: BorderRadius.circular(20),
-              //   boxShadow: [
-              //     BoxShadow(
-              //       color: Colors.black.withValues(alpha: 0.08),
-              //       blurRadius: 10,
-              //       offset: const Offset(0, 4),
-              //     ),
-              //   ],
-              // ),
+              color: colorCard ?? Theme.of(context).cardTheme.color,
               child: Padding(
                 padding: const EdgeInsets.all(18),
                 child: Column(
@@ -58,7 +47,15 @@ class DialogsDefault extends StatelessWidget {
                             Text(
                               title ?? "---",
                               style: TextStyle(
-                                  color: AppColors.textOnPrimaryLight),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
+                                      ?.color,
+                                  fontSize: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
+                                      ?.fontSize,
+                                  fontWeight: FontWeight.bold),
                             ),
                         Align(
                           alignment: Alignment.topRight,
@@ -68,9 +65,9 @@ class DialogsDefault extends StatelessWidget {
                                 Get.back();
                               });
                             },
-                            child: const Icon(
+                            child: Icon(
                               Icons.close,
-                              color: AppColors.backgroundLight,
+                              color: Theme.of(context).iconTheme.color,
                             ),
                           ),
                         ),
