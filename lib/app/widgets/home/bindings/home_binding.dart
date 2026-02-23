@@ -8,7 +8,13 @@ class HomeBinding implements Bindings {
   void dependencies() {
     // lazyPut carrega o controller apenas quando ele for usado pela primeira vez
     Get.lazyPut<HomeController>(() => HomeController());
-    Get.lazyPut<VolleyballScoreController>(() => VolleyballScoreController());
-    Get.lazyPut<ChessScoreController>(() => ChessScoreController());
+    Get.lazyPut<VolleyballScoreController>(
+      () => VolleyballScoreController(),
+      fenix: true,
+    );
+    Get.lazyPut<ChessScoreController>(
+      () => ChessScoreController(),
+      fenix: true,
+    );
   }
 }

@@ -8,6 +8,7 @@ class CustomButtonIconRound extends StatelessWidget {
   final Color colorBackground;
   final double? sizeIcon;
   final List<BoxShadow>? boxShadow;
+  final double? size;
 
   const CustomButtonIconRound({
     super.key,
@@ -17,13 +18,14 @@ class CustomButtonIconRound extends StatelessWidget {
     this.colorBackground = AppColors.textSecondaryLight,
     this.boxShadow,
     this.sizeIcon,
+    this.size = 40,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 40,
-      height: 40,
+      width: size,
+      height: size,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: Theme.of(context).cardTheme.color,

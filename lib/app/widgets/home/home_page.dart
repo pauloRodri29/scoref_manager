@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
+import 'package:scoref_manager/app/core/components/custom_card_icon.dart';
 import 'package:scoref_manager/app/core/routers/app_routers.dart';
 import 'package:scoref_manager/app/core/ui/colors/color.dart';
 import 'package:scoref_manager/app/widgets/home/home_controller.dart';
@@ -30,58 +31,31 @@ class HomePage extends GetView<HomeController> {
           height: Get.height,
           alignment: Alignment.topCenter,
           child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 24),
-              child: MasonryGridView(
-                gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: Get.width < 800 ? 2 : 3,
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: MasonryGridView(
+              gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: Get.width < 800 ? 2 : 3,
+              ),
+              children: [
+                CustomCardIcon(
+                  onTap: () {
+                    Get.toNamed(Routers.VOLLEYBALL);
+                  },
+                  label: "Voleibol",
+                  fontSize: fontSize,
+                  icon: Icons.sports_volleyball,
                 ),
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routers.VOLLEYBALL);
-                    },
-                    // Navigator.pushNamed(context, AppRoutes.i.volleyballPage),
-                    child: Card(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20),
-                        child: Text(
-                          "Volei",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: fontSize),
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routers.CHESS);
-                    },
-                    child: Card(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20),
-                        child: Text(
-                          "Xadrez",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: fontSize),
-                        ),
-                      ),
-                    ),
-                  ),
-                  // Expanded(
-                  //   child: GestureDetector(
-                  //     onTap: () {},
-                  //     child: const Card(
-                  //       child: Padding(
-                  //         padding: EdgeInsets.symmetric(vertical: 20),
-                  //         child: Icon(
-                  //           Icons.hourglass_top_outlined,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                ],
-              )),
+                CustomCardIcon(
+                  onTap: () {
+                    Get.toNamed(Routers.CHESS);
+                  },
+                  label: "Xadrez",
+                  fontSize: fontSize,
+                  icon: Icons.extension,
+                ),
+              ],
+            ),
+          ),
         ),
       );
     });

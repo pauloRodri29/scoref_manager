@@ -127,7 +127,7 @@ class _DialogsSettingsState extends State<DialogsSettings> {
                         ),
                         child: Center(
                             child: Text(
-                          "Jogadores",
+                          "Times",
                           style: TextStyle(
                             fontWeight: widget.volleyballScoreController
                                         .selectSession.value ==
