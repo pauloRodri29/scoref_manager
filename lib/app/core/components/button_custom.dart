@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:scoref_manager/app/core/constants/app_fonts_sizes.dart';
-import 'package:scoref_manager/app/core/ui/colors/color.dart';
 
 class ButtonCustom extends StatelessWidget {
   final String label;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scoref_manager/app/core/ui/colors/color.dart';
 
 class QuantitySelector extends StatefulWidget {
   final int value;
