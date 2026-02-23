@@ -29,7 +29,7 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
         DeviceOrientation.landscapeLeft,
         DeviceOrientation.landscapeRight,
       ]);
-      // Entra em fullscreen no mobile
+      // Entra em fullscreen no Desktop ou Web
       FullscreenHelper.enterFullscreen();
     }
   }
