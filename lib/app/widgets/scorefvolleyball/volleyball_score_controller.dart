@@ -18,6 +18,11 @@ class VolleyballScoreController extends GetxController {
   RxBool showButton = true.obs;
   RxBool limitPoints = false.obs;
   RxBool isFullscreen = false.obs;
+  RxBool markedVictory = false.obs;
+
+  /// Váriavel que dá permissão para marcar vitoria
+  bool isMarkedVitory =
+      true; // Variavel que controla se o jogador pode marcar vitoria
 
   List<Color> colors = [
     AppColors.scoreAmber,
@@ -38,15 +43,33 @@ class VolleyballScoreController extends GetxController {
   ];
 
   /// Configurações da partida
-  void changeShowButton() {
-    showButton.value = !showButton.value;
-    log(showButton.value.toString());
+
+  void changeShowButton(bool? value) {
+    if (value == null) {
+      showButton.value = !showButton.value;
+    } else {
+      showButton.value = value;
+    }
     update();
   }
 
-  void changeShowButtonWithValue(bool value) {
-    showButton.value = value;
-    log(showButton.value.toString());
+  void changeRuleFullPoints(bool value) {
+    limitPoints.value = value;
+    update();
+  }
+
+  void changeRuleMarkedVictory(bool? value) {
+    if (value != null) {
+      markedVictory.value = value;
+    } else {
+      markedVictory.value = !markedVictory.value;
+    }
+    log("Alterando regra de vitoria MarkedVitory: ${markedVictory.value}");
+    update();
+  }
+
+  void changeControllerMarkedVictory(bool value) {
+    isMarkedVitory = value;
     update();
   }
 
@@ -89,11 +112,6 @@ class VolleyballScoreController extends GetxController {
     update();
   }
 
-  void changeRuleFullPoints(bool value) {
-    limitPoints.value = value;
-    update();
-  }
-
   /// Métodos para controlar a partida
   void increment(String player) async {
     final target = player == player1.value.name ? player1 : player2;
@@ -110,6 +128,10 @@ class VolleyballScoreController extends GetxController {
     if (limitPoints.value) {
       if (target.value.points >= settingsManager.value.fullPoints) {
         reactionpoints();
+        if (markedVictory.value) {
+          log("Controlador dando permissão para marcar vitoria");
+          markedVictoryPlayer(player);
+        }
       }
     }
 
@@ -133,6 +155,21 @@ class VolleyballScoreController extends GetxController {
     update();
   }
 
+  void markedVictoryPlayer(String player) {
+    log("Marcando vitoria para $player");
+    if (isMarkedVitory && markedVictory.value) {
+      if (player == player1.value.name) {
+        player1.value.victory++;
+      } else if (player == player2.value.name) {
+        player2.value.victory++;
+      }
+
+      changeControllerMarkedVictory(false);
+    }
+
+    update();
+  }
+
   void resetPoints({PlayerVolleyball? player}) {
     if (player != null) {
       if (player.name == player1.value.name) {
@@ -144,6 +181,9 @@ class VolleyballScoreController extends GetxController {
       player1.value.points = 0;
       player2.value.points = 0;
     }
+    if (markedVictory.value) {
+      changeControllerMarkedVictory(true);
+    }
 
     update();
   }
@@ -151,6 +191,10 @@ class VolleyballScoreController extends GetxController {
   void resetVitory() {
     player1.value.victory = 0;
     player2.value.victory = 0;
+    if (markedVictory.value) {
+      changeControllerMarkedVictory(true);
+    }
+
     update();
   }
 
@@ -177,9 +221,6 @@ class VolleyballScoreController extends GetxController {
     update();
   }
 
-  // void playSound() {
-  //   player.play(AssetSource('audio/alert_metal.mp3'));
-  // }
   @override
   void onInit() {
     super.onInit();

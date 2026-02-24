@@ -197,76 +197,6 @@ class _DialogsSettingsState extends State<DialogsSettings> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Obx(() => Column(
-                  spacing: 12,
-                  children: [
-                    Row(
-                      spacing: 12,
-                      mainAxisAlignment: Get.width < 800
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Limitar pontos",
-                          style: TextStyle(
-                            color:
-                                Theme.of(context).textTheme.bodyMedium?.color,
-                            fontSize: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.fontSize,
-                          ),
-                          maxLines: 3,
-                        ),
-                        InkWell(
-                          onTap:
-                              widget.volleyballScoreController.limitPoints.value
-                                  ? () {
-                                      widget.volleyballScoreController
-                                          .changeRuleFullPoints(false);
-                                    }
-                                  : () {
-                                      widget.volleyballScoreController
-                                          .changeRuleFullPoints(true);
-                                    },
-                          child: SwitchCustom(
-                            value: widget
-                                .volleyballScoreController.limitPoints.value,
-                          ),
-                        ),
-                      ],
-                    ),
-                    if (widget.volleyballScoreController.limitPoints.value)
-                      Row(
-                        mainAxisAlignment: Get.width < 800
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        spacing: 14,
-                        children: [
-                          Text(
-                            "Total de pontos",
-                            style: TextStyle(
-                              color:
-                                  Theme.of(context).textTheme.bodyMedium?.color,
-                              fontSize: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.fontSize,
-                            ),
-                          ),
-                          QuantitySelector(
-                            onChanged: (value) {
-                              setState(() {
-                                fullPoints = value;
-                              });
-                            },
-                            value: widget.volleyballScoreController
-                                .settingsManager.value.fullPoints,
-                          ),
-                        ],
-                      ),
-                  ],
-                )),
             Obx(
               () => Row(
                 mainAxisAlignment: Get.width < 800
@@ -284,11 +214,112 @@ class _DialogsSettingsState extends State<DialogsSettings> {
                     maxLines: 3,
                   ),
                   InkWell(
-                    onTap: widget.volleyballScoreController.changeShowButton,
+                    onTap: () {
+                      widget.volleyballScoreController.changeShowButton(null);
+                    },
                     child: SwitchCustom(
                       value: widget.volleyballScoreController.showButton.value,
                     ),
                   ),
+                ],
+              ),
+            ),
+            Obx(
+              () => Column(
+                spacing: 24,
+                children: [
+                  if (widget.volleyballScoreController.limitPoints.value)
+                    Row(
+                      mainAxisAlignment: Get.width < 800
+                          ? MainAxisAlignment.spaceBetween
+                          : MainAxisAlignment.start,
+                      spacing: 14,
+                      children: [
+                        Text(
+                          "Marcar vitória",
+                          style: TextStyle(
+                            color:
+                                Theme.of(context).textTheme.bodyMedium?.color,
+                            fontSize: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.fontSize,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            widget.volleyballScoreController
+                                .changeRuleMarkedVictory(null);
+                          },
+                          child: SwitchCustom(
+                            value: widget
+                                .volleyballScoreController.markedVictory.value,
+                          ),
+                        ),
+                      ],
+                    ),
+                  Row(
+                    spacing: 12,
+                    mainAxisAlignment: Get.width < 800
+                        ? MainAxisAlignment.spaceBetween
+                        : MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Limitar pontos",
+                        style: TextStyle(
+                          color: Theme.of(context).textTheme.bodyMedium?.color,
+                          fontSize:
+                              Theme.of(context).textTheme.bodyMedium?.fontSize,
+                        ),
+                        maxLines: 3,
+                      ),
+                      InkWell(
+                        onTap:
+                            widget.volleyballScoreController.limitPoints.value
+                                ? () {
+                                    widget.volleyballScoreController
+                                        .changeRuleFullPoints(false);
+                                  }
+                                : () {
+                                    widget.volleyballScoreController
+                                        .changeRuleFullPoints(true);
+                                  },
+                        child: SwitchCustom(
+                          value: widget
+                              .volleyballScoreController.limitPoints.value,
+                        ),
+                      ),
+                    ],
+                  ),
+                  if (widget.volleyballScoreController.limitPoints.value)
+                    Row(
+                      mainAxisAlignment: Get.width < 800
+                          ? MainAxisAlignment.spaceBetween
+                          : MainAxisAlignment.start,
+                      spacing: 14,
+                      children: [
+                        Text(
+                          "Total de pontos",
+                          style: TextStyle(
+                            color:
+                                Theme.of(context).textTheme.bodyMedium?.color,
+                            fontSize: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.fontSize,
+                          ),
+                        ),
+                        QuantitySelector(
+                          onChanged: (value) {
+                            setState(() {
+                              fullPoints = value;
+                            });
+                          },
+                          value: widget.volleyballScoreController
+                              .settingsManager.value.fullPoints,
+                        ),
+                      ],
+                    ),
                 ],
               ),
             ),
