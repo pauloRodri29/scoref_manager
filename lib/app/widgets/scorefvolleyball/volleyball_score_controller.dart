@@ -15,6 +15,7 @@ class VolleyballScoreController extends GetxController {
       PlayerVolleyball(name: 'Time 2', color: AppColors.scoreRoyalBlue).obs;
 
   RxBool showButton = true.obs;
+  RxBool limitPoints = false.obs;
 
   List<Color> colors = [
     AppColors.scoreAmber,
@@ -70,38 +71,29 @@ class VolleyballScoreController extends GetxController {
     update();
   }
 
+  void changeRuleFullPoints(bool value) {
+    limitPoints.value = value;
+    update();
+  }
+
   void increment(String player) async {
     final target = player == player1.value.name ? player1 : player2;
 
-    if (target.value.points >= settingsManager.value.fullPoints) {
-      reactionpoints();
-      return;
+    if (limitPoints.value) {
+      if (target.value.points >= settingsManager.value.fullPoints) {
+        reactionpoints();
+        return;
+      }
     }
+
     target.value.points++;
 
-    if (target.value.points >= settingsManager.value.fullPoints) {
-      reactionpoints();
+    if (limitPoints.value) {
+      if (target.value.points >= settingsManager.value.fullPoints) {
+        reactionpoints();
+      }
     }
 
-    // if (player == player1.value.name) {
-    //   if (player1.value.points >= settingsManager.value.fullPoints) {
-    //     reactionpoints();
-    //     return;
-    //   }
-    //   player1.value.points++;
-    //   if (player1.value.points >= settingsManager.value.fullPoints) {
-    //     reactionpoints();
-    //   }
-    // } else if (player == player2.value.name) {
-    //   if (player2.value.points >= settingsManager.value.fullPoints) {
-    //     reactionpoints();
-    //     return;
-    //   }
-    //   player2.value.points++;
-    //   if (player2.value.points >= settingsManager.value.fullPoints) {
-    //     reactionpoints();
-    //   }
-    // }
     update();
   }
 

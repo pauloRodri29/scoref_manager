@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scoref_manager/app/core/components/button_custom.dart';
 
 class DialogsDefault extends StatelessWidget {
   final String? title;
   final Widget? titleWidget;
-  final List<Widget> children;
+  final Widget child;
   final double? width;
   final double? height;
   final Color? colorCard;
-
+  final VoidCallback? onCancel;
+  final VoidCallback? onConfirm;
   const DialogsDefault({
     super.key,
     this.title,
-    required this.children,
+    required this.child,
     this.width,
     this.height,
     this.titleWidget,
     this.colorCard,
+    this.onCancel,
+    this.onConfirm,
   });
 
   @override
@@ -26,8 +30,8 @@ class DialogsDefault extends StatelessWidget {
       child: Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            maxWidth: width ?? Get.height,
-            maxHeight: height ?? Get.height,
+            maxWidth: width ?? (Get.width < 800 ? Get.width : Get.width * 0.6),
+            maxHeight: height ?? Get.height * 0.8,
           ),
           child: Align(
             alignment: Alignment.center,
@@ -47,15 +51,16 @@ class DialogsDefault extends StatelessWidget {
                             Text(
                               title ?? "---",
                               style: TextStyle(
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge
-                                      ?.color,
-                                  fontSize: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge
-                                      ?.fontSize,
-                                  fontWeight: FontWeight.bold),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.color,
+                                fontSize: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.fontSize,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                         Align(
                           alignment: Alignment.topRight,
@@ -74,11 +79,29 @@ class DialogsDefault extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 16),
-                    Flexible(
-                      child: SingleChildScrollView(
-                        child: Column(children: children),
-                      ),
+                    Expanded(
+                      child: child,
                     ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 24),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ButtonCustom(
+                              filled: false,
+                              label: "Cancelar",
+                              onPressed: onCancel,
+                            ),
+                            ButtonCustom(
+                              label: "Confirmar",
+                              onPressed: onConfirm,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),

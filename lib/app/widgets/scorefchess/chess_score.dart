@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:scoref_manager/app/core/components/text_field_default.dart';
+import 'package:get/get.dart';
+import 'package:scoref_manager/app/core/components/temporary_widget.dart';
+import 'package:scoref_manager/app/widgets/scorefchess/chess_score_controller.dart';
 
 class ScorefChessPage extends StatefulWidget {
   const ScorefChessPage({super.key});
@@ -9,27 +11,15 @@ class ScorefChessPage extends StatefulWidget {
 }
 
 class _ScorefChessPageState extends State<ScorefChessPage> {
-  final _textEdit = TextEditingController();
+  final ChessScoreController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 200,
-              width: 200,
-              child: CustomTextFieldDefault(
-                text: "Teste",
-                textEditingController: _textEdit,
-                nameHint: "Teste time 1",
-              ),
-            ),
-            TextButton(onPressed: () {}, child: Text("Aperte aqui"))
-          ],
-        ),
-      ),
-    );
+        body: CustomTemporaryWidget(
+      message: "Em desenvolvimento",
+      icon: Icons.settings,
+      onBack: () => Get.back(),
+    ));
   }
 }

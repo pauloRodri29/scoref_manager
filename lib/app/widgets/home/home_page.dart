@@ -22,7 +22,7 @@ class HomePage extends GetView<HomeController> {
             "Scoref Manager",
             style: TextStyle(
               color: AppColors.textOnPrimaryLight,
-              fontSize: ((fontSize * 2).clamp(18, 24)),
+              fontSize: ((fontSize * 2).clamp(18, 20)),
             ),
           ),
         ),
