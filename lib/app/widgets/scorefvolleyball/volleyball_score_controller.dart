@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:scoref_manager/app/core/models/settings_manager.dart';
@@ -127,7 +128,7 @@ class VolleyballScoreController extends GetxController {
 
     if (limitPoints.value) {
       if (target.value.points >= settingsManager.value.fullPoints) {
-        reactionpoints();
+        reactionpoints(isVitory: true);
         if (markedVictory.value) {
           log("Controlador dando permissão para marcar vitoria");
           markedVictoryPlayer(player);
@@ -141,6 +142,7 @@ class VolleyballScoreController extends GetxController {
   void decrement(String player) {
     if (player == player1.value.name) {
       if (player1.value.points <= 0) {
+        reactionpoints();
         vibrate();
         return;
       }
@@ -148,6 +150,7 @@ class VolleyballScoreController extends GetxController {
     } else if (player == player2.value.name) {
       if (player2.value.points <= 0) {
         vibrate();
+        reactionpoints();
         return;
       }
       player2.value.points--;
@@ -199,8 +202,8 @@ class VolleyballScoreController extends GetxController {
   }
 
   /// Metodos de reacao que disparam som e vibracao
-  void reactionpoints() {
-    playSound();
+  void reactionpoints({bool isVitory = false}) {
+    playSound(isVitory);
     vibrate();
   }
 
@@ -210,9 +213,13 @@ class VolleyballScoreController extends GetxController {
     // }
   }
 
-  void playSound() {
-    // final p = AudioPlayer();
-    // p.play(AssetSource('audio/alert_metal.mp3'));
+  void playSound(bool isVitory) {
+    final p = AudioPlayer();
+    if (isVitory) {
+      p.play(AssetSource('audio/awaw.mp3'));
+    } else {
+      p.play(AssetSource('audio/alert_metal.mp3'));
+    }
   }
 
   void verifyFullScreen() async {
