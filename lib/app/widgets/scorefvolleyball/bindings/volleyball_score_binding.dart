@@ -9,5 +9,6 @@ class VolleyballScoreBinding implements Bindings {
       () => VolleyballScoreController(),
       fenix: true,
     );
+    
   }
 }

@@ -16,3 +16,12 @@ Future<void> toggleFullscreenImpl() async {
     await enterFullscreenImpl();
   }
 }
+
+// métodod que verifica se o app esta em fullscreen
+Future<bool> isFullscreenImpl() async {
+  if (html.document.fullscreenElement != null) {
+    return true;
+  } else {
+    return false;
+  }
+}

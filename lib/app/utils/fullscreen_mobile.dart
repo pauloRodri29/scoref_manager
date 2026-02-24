@@ -1,6 +1,8 @@
 // lib/app/utils/fullscreen_mobile.dart
 import 'package:flutter/services.dart';
 
+bool _isFullscreen = false;
+
 Future<void> enterFullscreenImpl() async {
   await SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.immersiveSticky,
@@ -18,4 +20,8 @@ Future<void> exitFullscreenImpl() async {
 Future<void> toggleFullscreenImpl() async {
   // No mobile, vamos sempre entrar em fullscreen quando chamado
   await enterFullscreenImpl();
+}
+
+Future<bool> isFullscreenImpl() async {
+  return _isFullscreen;
 }

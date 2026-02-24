@@ -14,4 +14,8 @@ class FullscreenHelper {
   static Future<void> toggleFullscreen() async {
     await toggleFullscreenImpl();
   }
+
+  static Future<bool> isFullscreen() async {
+    return await isFullscreenImpl();
+  }
 }

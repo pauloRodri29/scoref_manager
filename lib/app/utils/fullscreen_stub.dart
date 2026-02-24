@@ -12,3 +12,7 @@ Future<void> exitFullscreenImpl() async {
 Future<void> toggleFullscreenImpl() async {
   throw UnsupportedError('Fullscreen is not supported on this platform');
 }
+
+Future<bool> isFullscreenImpl() async {
+  throw UnsupportedError('Fullscreen is not supported on this platform');
+}

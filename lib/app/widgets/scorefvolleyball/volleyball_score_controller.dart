@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:scoref_manager/app/core/models/settings_manager.dart';
 import 'package:scoref_manager/app/core/ui/colors/color.dart';
+import 'package:scoref_manager/app/utils/full_screen_helper.dart';
 import 'package:scoref_manager/app/widgets/scorefvolleyball/models/player_volleyball.dart';
 
 class VolleyballScoreController extends GetxController {
@@ -16,6 +17,7 @@ class VolleyballScoreController extends GetxController {
 
   RxBool showButton = true.obs;
   RxBool limitPoints = false.obs;
+  RxBool isFullscreen = false.obs;
 
   List<Color> colors = [
     AppColors.scoreAmber,
@@ -169,7 +171,18 @@ class VolleyballScoreController extends GetxController {
     // p.play(AssetSource('audio/alert_metal.mp3'));
   }
 
+  void verifyFullScreen() async {
+    final value = await FullscreenHelper.isFullscreen();
+    isFullscreen.value = value;
+    update();
+  }
+
   // void playSound() {
   //   player.play(AssetSource('audio/alert_metal.mp3'));
   // }
+  @override
+  void onInit() {
+    super.onInit();
+    verifyFullScreen();
+  }
 }
