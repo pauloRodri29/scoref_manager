@@ -115,6 +115,18 @@ flutter:
 
 flutter_native_splash:
   color: "#FFFFFF"
-  image: assets/images/splash/splash_screen_logo.png
+  image: assets/images/splash/splash.png
+  # (opcional) modo escuro
+  # color_dark: "#121212"
+  # image_dark: assets/images/splash/logo_dark.png
+
   android: true
-#   # ios: true
+  ios: true
+  web: true
+
+  fullscreen: true
+
+  # Opcional: controlar como a imagem se comporta
+  # android_gravity: center
+  # web_image_mode: contain
+  # ios: true
