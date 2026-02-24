@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:scoref_manager/app/core/components/button_custom.dart';
 
 class CustomTemporaryWidget extends StatelessWidget {
