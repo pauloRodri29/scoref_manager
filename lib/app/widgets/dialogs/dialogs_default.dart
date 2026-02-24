@@ -25,90 +25,107 @@ class DialogsDefault extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: Center(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: width ?? (Get.width < 800 ? Get.width : Get.width * 0.6),
-            maxHeight: height ?? Get.height * 0.8,
-          ),
-          child: Align(
-            alignment: Alignment.center,
-            child: Card(
-              color: colorCard ?? Theme.of(context).cardTheme.color,
-              child: Padding(
-                padding: const EdgeInsets.all(18),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Cabeçalho
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    final screenWidth = Get.width;
+    final screenHeight = Get.height;
+    final isLandscape = screenWidth >
+        screenHeight; // Verifica orientação do dispositivo é landscape ou seja largura maior que altura
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Material(
+          color: Colors.transparent,
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: width ??
+                    (isLandscape
+                        ? screenWidth * 0.5 // menor largura
+                        : screenWidth * 0.8), // quase tela toda no retrato
+        
+                maxHeight: height ??
+                    (isLandscape
+                        ? screenHeight * 0.99 // maior altura
+                        : screenHeight * 0.9),
+                // maxWidth: width ?? (Get.width < 800 ? Get.width : Get.width * 0.6),
+                // maxHeight: height ?? Get.height * 0.8,
+              ),
+              child: Align(
+                alignment: Alignment.center,
+                child: Card(
+                  color: colorCard ?? Theme.of(context).cardTheme.color,
+                  child: Padding(
+                    padding: const EdgeInsets.all(18),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        titleWidget ??
-                            Text(
-                              title ?? "---",
-                              style: TextStyle(
-                                color: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge
-                                    ?.color,
-                                fontSize: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge
-                                    ?.fontSize,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: InkWell(
-                            onTap: () {
-                              WidgetsBinding.instance.addPostFrameCallback((_) {
-                                Get.back();
-                              });
-                            },
-                            child: Icon(
-                              Icons.close,
-                              color: Theme.of(context).iconTheme.color,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    Expanded(
-                      child: child,
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 24),
-                        child: Row(
+                        // Cabeçalho
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            ButtonCustom(
-                              filled: false,
-                              label: "Cancelar",
-                              onPressed: onCancel,
-                            ),
-                            ButtonCustom(
-                              label: "Confirmar",
-                              onPressed: onConfirm,
+                            titleWidget ??
+                                Text(
+                                  title ?? "---",
+                                  style: TextStyle(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge
+                                        ?.color,
+                                    fontSize: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge
+                                        ?.fontSize,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: InkWell(
+                                onTap: () {
+                                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                                    Get.back();
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.close,
+                                  color: Theme.of(context).iconTheme.color,
+                                ),
+                              ),
                             ),
                           ],
                         ),
-                      ),
-                    )
-                  ],
+                        const SizedBox(height: 16),
+                        Expanded(
+                          child: child,
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 24),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ButtonCustom(
+                                  filled: false,
+                                  label: "Cancelar",
+                                  onPressed: onCancel,
+                                ),
+                                ButtonCustom(
+                                  label: "Confirmar",
+                                  onPressed: onConfirm,
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      }
     );
   }
 }

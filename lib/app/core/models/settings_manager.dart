@@ -1,5 +1,5 @@
 class SettingsManager {
-  final int fullPoints;
+  int fullPoints;
 
   SettingsManager({required this.fullPoints});
 }

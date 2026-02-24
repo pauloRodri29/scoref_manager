@@ -35,6 +35,7 @@ class VolleyballScoreController extends GetxController {
     AppColors.scoreWine,
   ];
 
+  /// Configurações da partida
   void changeShowButton() {
     showButton.value = !showButton.value;
     log(showButton.value.toString());
@@ -44,6 +45,21 @@ class VolleyballScoreController extends GetxController {
   void changeShowButtonWithValue(bool value) {
     showButton.value = value;
     log(showButton.value.toString());
+    update();
+  }
+
+  void changeSettings(int fullPoints) {
+    settingsManager.value.fullPoints = fullPoints;
+
+    // Verifica apenas quem ultrapassou o novo limite
+    if (player1.value.points > fullPoints) {
+      resetPoints(player: player1.value);
+    }
+
+    if (player2.value.points > fullPoints) {
+      resetPoints(player: player2.value);
+    }
+
     update();
   }
 
@@ -76,6 +92,7 @@ class VolleyballScoreController extends GetxController {
     update();
   }
 
+  /// Métodos para controlar a partida
   void increment(String player) async {
     final target = player == player1.value.name ? player1 : player2;
 
@@ -114,11 +131,6 @@ class VolleyballScoreController extends GetxController {
     update();
   }
 
-  void reactionpoints() {
-    playSound();
-    vibrate();
-  }
-
   void resetPoints({PlayerVolleyball? player}) {
     if (player != null) {
       if (player.name == player1.value.name) {
@@ -140,6 +152,12 @@ class VolleyballScoreController extends GetxController {
     update();
   }
 
+  /// Metodos de reacao que disparam som e vibracao
+  void reactionpoints() {
+    playSound();
+    vibrate();
+  }
+
   void vibrate() async {
     // if (await Vibration.hasVibrator() ?? false) {
     //   Vibration.vibrate(duration: 200);
@@ -154,19 +172,4 @@ class VolleyballScoreController extends GetxController {
   // void playSound() {
   //   player.play(AssetSource('audio/alert_metal.mp3'));
   // }
-
-  void changeSettings(int fullPoints) {
-    settingsManager.value = SettingsManager(fullPoints: fullPoints);
-
-    // Verifica apenas quem ultrapassou o novo limite
-    if (player1.value.points > fullPoints) {
-      resetPoints(player: player1.value);
-    }
-
-    if (player2.value.points > fullPoints) {
-      resetPoints(player: player2.value);
-    }
-
-    update();
-  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:scoref_manager/app/core/components/real_time_clock.dart';
 import 'package:scoref_manager/app/core/ui/colors/color.dart';
 import 'package:scoref_manager/app/utils/full_screen_helper.dart';
 import 'package:scoref_manager/app/widgets/scorefvolleyball/dialogs/dialogs_settings.dart';
@@ -16,6 +17,7 @@ class ScorefVolleyballPage extends StatefulWidget {
 
 class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
   final VolleyballScoreController controller = Get.find();
+  bool showTime = false;
 
   @override
   void initState() {
@@ -27,8 +29,19 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
         DeviceOrientation.landscapeRight,
       ]);
       // Entra em fullscreen no Desktop ou Web
-      FullscreenHelper.enterFullscreen();
     }
+    if (UniversalPlatform.isDesktop || UniversalPlatform.isWeb) {
+      // Entra em fullscreen no Desktop ou Web
+      FullscreenHelper.enterFullscreen();
+      showTime = true;
+    }
+  }
+
+  void controllerTimeFullscreen() async {
+    setState(() {
+      FullscreenHelper.toggleFullscreen();
+      showTime = !showTime;
+    });
   }
 
   @override
@@ -80,7 +93,6 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
         isLandscape || (UniversalPlatform.isWeb && screenWidth > screenHeight);
 
     return GetBuilder<VolleyballScoreController>(
-      initState: (_) {},
       builder: (volleyballScoreController) {
         return Scaffold(
           appBar: AppBar(
@@ -196,6 +208,13 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
                             ],
                           ),
                         ),
+                        if ((UniversalPlatform.isWeb ||
+                                UniversalPlatform.isDesktop) &&
+                            showTime)
+                          Align(
+                            alignment: AlignmentGeometry.center,
+                            child: RealTimeClock(),
+                          ),
                         Align(
                           alignment: AlignmentGeometry.centerRight,
                           child: Row(
@@ -204,14 +223,14 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
                               if (UniversalPlatform.isWeb)
                                 InkWell(
                                   onTap: () {
-                                    FullscreenHelper.toggleFullscreen();
+                                    controllerTimeFullscreen();
                                   },
                                   child: Icon(
                                     Icons.fullscreen,
                                     color: AppColors.backgroundLight,
                                   ),
                                 ),
-                              const SizedBox(height: 12),
+                              const SizedBox(width: 12),
                               InkWell(
                                 onTap: () {
                                   Get.dialog(DialogsSettings(
@@ -374,6 +393,26 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
               ),
             ),
           ),
+        if ((UniversalPlatform.isWeb || UniversalPlatform.isDesktop) &&
+            showTime)
+          Align(
+            alignment: AlignmentGeometry.topCenter,
+            child: Container(
+                margin: EdgeInsets.only(top: 4),
+                padding: EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  color: AppColors.textSecondaryLight,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.3),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: RealTimeClock()),
+          ),
         if (volleyballScoreController.showButton.value)
           Align(
             alignment: Alignment.centerRight,
@@ -476,7 +515,8 @@ class _ScorefVolleyballPageState extends State<ScorefVolleyballPage> {
               if (UniversalPlatform.isWeb)
                 InkWell(
                   onTap: () {
-                    FullscreenHelper.toggleFullscreen();
+                    // FullscreenHelper.toggleFullscreen();
+                    controllerTimeFullscreen();
                   },
                   child: Container(
                     width: 40,

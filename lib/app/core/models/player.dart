@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 abstract class Player {
-   String name;
-   Color? color;
-   int victory;
-   int defeat;
+  String name;
+  Color? color;
+  int victory;
+  int defeat;
 
   Player({
     required this.name,
